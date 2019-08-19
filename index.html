@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>主页</title>
+
+<script src="JS/jquery-2.1.1.min.js" language="javascript"></script>
+<script src="JS/Functions.js" language="javascript"></script>
+<script src="JS/fullplay.js" language="javascript"></script>
+<script src="JS/Console.js" language="javascript"></script>
+<script src="JS/Cookie.js"></script>
+<link rel="stylesheet" href="css/Untitled-2.css" type="text/css">
+
+<script language="javascript">
+
+	var IMG_st = new Array("_IMG/bac_image/001.png","_IMG/bac_image/001.jpg","_IMG/bac_image/002.jpg","_IMG/百毒.png","_IMG/啊B.png","_IMG/必应.png")
+	var S_test_Carry = new Array("rgba(0,196,255,0.91)","rgba(251,136,231,0.89)","rgba(29,85,255,0.87)")
+	var IMG_SS_inser = IMG_st[3]  //用户默认搜索引擎
+	var S_test_cor = S_test_Carry[0]
+	var rad = 0; //随机背景变量
+	var ret_node2_Text = ""
+
+	$(document).ready(function(){
+
+		checkCookie_c()
+
+		/* 一些开关变量 */
+		var Return_test = false;
+		var cike_test_on = true;
+		var cike_Console_open = false;
+		var insert_node_i = 0;
+		var S_test_http = 1;
+		var C_console_cikeTest =false;
+
+		function test_re(){
+
+			$("#S_text").hover(function(){ if(cike_test_on){_onhrvar();}else{filter_center(true,"08")} },function(){ if(cike_test_on){_onBlur();} })
+			$("#S_text").blur(function(){ _onBlur(); cike_test_on = true;Return_test = false;filter_center(false) })
+			$("#S_text").focus(function(){  Return_test = true;cike_test_on = false;_onFocus(S_test_cor);filter_center(true,"08") })
+			$("#node2").blur(function(){ cike_Console_open = false;filter_center(false);C_console_cikeTest = false })
+			$("#node2").focus(function(){ cike_Console_open = true;filter_center(true,"06");C_console_cikeTest = true })
+
+			$(".http_image").hover(function(){
+				filter_center(true,"04")
+				$(this).css("width","11%")
+				$(this).css("box-shadow","0 0 12px #000")
+			},function(){
+				filter_center(false)
+				$(this).css("width","10%")
+				$(this).css("box-shadow","")
+			})
+
+		}
+
+		function like_http_on(){
+			$("#http_img1").bind("click",function(){
+				S_test_http = 1
+				IMG_SS_inser = IMG_st[3]
+				insert_image(IMG_SS_inser)
+				S_test_cor = S_test_Carry[0]
+				rad = wpaper_bac(rad)
+				filter_center(false)
+				setCookie("sreche_from","baidu",365)
+			})
+			$("#http_img2").bind("click",function(){
+				S_test_http = 2
+				IMG_SS_inser = IMG_st[4]
+				insert_image(IMG_SS_inser)
+				S_test_cor = S_test_Carry[1]
+				rad = wpaper_bac(rad)
+				filter_center(false)
+				setCookie("sreche_from","AB",365)
+			})
+			$("#http_img3").bind("click",function(){
+				S_test_http = 3
+				IMG_SS_inser = IMG_st[5]
+				insert_image(IMG_SS_inser)
+				S_test_cor = S_test_Carry[2]
+				rad = wpaper_bac(rad)
+				filter_center(false)
+				setCookie("sreche_from","biyin",365)
+			})
+		}
+
+		document.onkeydown=function(ev){
+
+			if (ev.shiftKey && ev.keyCode == 67 && cike_test_on == true && cike_Console_open == false){
+				insert_node_i++
+				if(insert_node_i==1){ CreAndRe_textarea_Console("Console_root","textarea",true);}
+				if(insert_node_i==2){ CreAndRe_textarea_Console("Console_root","textarea",false); insert_node_i=0}
+				test_re();
+			}
+
+             if(ev.keyCode==13 && Return_test == true){
+				 button_clik(false,S_test_http)
+			}
+
+			if(ev.keyCode==13 && C_console_cikeTest  && node2){
+
+
+					ret_node2_Text = C_console_js($("#node2").val())
+
+			}
+		}
+
+		//预加载 _IMG1 图片
+		for(var i=0;i<IMG_st.length;i++){
+			$("#_IMG1").html("<img src="+IMG_st[i]+">");
+		}
+
+		//加载用户最后一次的搜索引擎
+		var cc = getCookie("sreche_from")
+		if(cc == 'baidu'){ IMG_SS_inser = IMG_st[3];S_test_http = 1;S_test_cor = S_test_Carry[0] }
+		if(cc == 'AB'){ IMG_SS_inser = IMG_st[4];S_test_http = 2;S_test_cor = S_test_Carry[1]}
+		if(cc == "biyin"){ IMG_SS_inser = IMG_st[5];S_test_http = 3;S_test_cor = S_test_Carry[2] }
+
+		insert_image(IMG_SS_inser)
+		button_clik(true,S_test_http)
+		rad = wpaper_bac(rad)
+		like_http_on()
+		test_re();
+	})
+</script>
+</head>
+
+<body>
+	<div id="filter_colro">
+		<img src="_IMG/bac_image/002.jpg">
+	</div>
+	<div id="ink1-2" class="nGyroParallax1">
+		<div id="bodyPage">
+			<img src="_IMG/bac_image/003.png" class="bg">
+			<img src="_IMG/bac_image/006.jpg" class="bg">
+			<img src="_IMG/bac_image/002.png" class="bg">
+			<img src="_IMG/bac_image/001.png" class="bg">
+			<img src="_IMG/bac_image/004.png" class="bg">
+			<img src="_IMG/bac_image/005.png" class="bg">
+			</div>
+		</div>
+
+
+
+	<div id="S_Guop">
+
+		<div id="S_link_http">
+
+			<span> <img id="http_img1" class="http_image" src="_IMG/007.PNG"> </span>
+			<span> <img id="http_img2" class="http_image" src="_IMG/008.PNG"> </span>
+			<span> <img id="http_img3" class="http_image" src="_IMG/009.PNG"> </span>
+
+		</div>
+
+		<div id="S_seche">
+		<span  id="_IMG1"></span>
+		<input class="Guop_Sec" id="S_text" type="text" placeholder=" 输入搜索值 " maxlength="100">
+		</div>
+
+	</div>
+
+	<div id="Console_root">
+
+	</div>
+</body>
+</html>
